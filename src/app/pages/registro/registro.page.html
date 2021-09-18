@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/"
+      text="volver"
+      color="primary"
+      mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar>
+         <ion-img src="/assets/coronaviruu.png" routerLink="/index"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<br>
+  <ion-img src="/assets/sato.jpg"></ion-img>
+  
+  <form #formulario="ngForm" (ngSubmit) ="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre: </ion-label>
+      <ion-input autofocus="true" autocapitalize type="text" placeholder="Ingrese su nombre"
+                 name="nombre" [(ngModel)]= "usuario.nombre"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Edad: </ion-label>
+      <ion-input type="number" placeholder="Ingrese su edad"
+                 name="edad" [(ngModel)]= "usuario.edad"
+                 required>
+      </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Telefono: </ion-label>
+      <ion-input type="tel" placeholder="Ingrese su telefono"
+                 name="telefono" [(ngModel)]= "usuario.tel"
+                 minlength="9"
+                 maxlength="9"
+                 pattern="^([0-9]{8,9})$"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email: </ion-label>
+      <ion-input type="email" placeholder="Email"
+                 name="email" [(ngModel)]= "usuario.email"
+                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password: </ion-label>
+      <ion-input type="password" placeholder="Contraseña"
+                 name="password" [(ngModel)]= "usuario.password"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-button [disabled] ="formulario.invalid"
+      type="submit" expand="block" routerLink="/index" (click)="presentAlert()" color="success" shape="round">
+        Enviar Datos
+    </ion-button>
+
+  </form>
+</ion-content>
